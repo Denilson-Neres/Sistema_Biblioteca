@@ -1,0 +1,12 @@
+from flask_script import Manager
+from Biblioteca import create_app, db
+
+manager = Manager(create_app)
+
+@manager.command
+def init_db():
+    db.drop_all()
+    db.create_all()
+
+if __name__ == "__main__":
+    manager.run()
